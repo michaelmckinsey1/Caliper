@@ -604,6 +604,13 @@ if (INSTALL_CONFIG)
     DESTINATION
       ${CMAKE_INSTALL_LIBDIR}/pkgconfig
   )
+
+  install(
+    FILES
+      "${PROJECT_SOURCE_DIR}/cmake/FindCUPTI.cmake"
+    DESTINATION
+      "${CMAKE_INSTALL_DATAROOTDIR}/cmake/caliper/modules"
+  )
 endif()
 
 #

@@ -2,6 +2,15 @@
 
 include(CMakeFindDependencyMacro)
 
+if (@CALIPER_HAVE_CUPTI@)
+  # Make Caliper's Find*.cmake modules visible to the consuming project
+  list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/modules")
+  # CUPTI implies CUDA toolkit
+  find_dependency(CUDAToolkit REQUIRED)
+  # Uses Caliper-installed modules/FindCUPTI.cmake
+  find_dependency(CUPTI REQUIRED)
+endif()
+
 include("${CMAKE_CURRENT_LIST_DIR}/caliper-targets.cmake")
 
 set_and_check(caliper_INCLUDE_DIR "@PACKAGE_caliper_INSTALL_INCLUDE_DIR@")
